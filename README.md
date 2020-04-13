@@ -5,7 +5,7 @@ To add voting options to the UI using Intellij:
 3) Set the "text" property to whatever you want to show on the UI as a voting option. This string will be sent to the flask server.
 4) To change the window label text, App.java line 89 has the following line, change it to change the text:
     JFrame frame = new JFrame("Pretend this is a phone");
-5) To change the api votes are sent to, App.java line 89 has the following line, change it to change the url
+5) To change the api votes are sent to, App.java line 89 has the following line, change it to change the url:
     URL url = new URL("http://127.0.0.1:5000/vote?candidate=" + candidateWithoutSpaces);
 6) To create an exicutable .jar file, click the "Build" menu, and click "Build Artifacts".  
 (steps 1, 2, and 3 visualized in readme.jpg)

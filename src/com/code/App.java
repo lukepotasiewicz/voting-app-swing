@@ -1,10 +1,12 @@
 package com.code;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -85,9 +87,20 @@ public class App {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Pretend this is a phone");
-        frame.setContentPane(new App().panel1);
+        try {
+            final Image backgroundImage = ImageIO.read(App.class.getResource("/resources/background.png"));
+            frame.setContentPane(new JPanel(new BorderLayout()) {
+                @Override public void paintComponent(Graphics g) {
+                    g.drawImage(backgroundImage, 0, 0, null);
+                }
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        frame.getContentPane().add(new App().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(new Dimension(360, 640));
+        frame.setSize(new Dimension(497, 900));
+        frame.setResizable(false);
         frame.setVisible(true);
     }
 }
